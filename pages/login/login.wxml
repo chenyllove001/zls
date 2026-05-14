@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 背景图片 -->
+  <image class="bg-image" src="{{bgImage}}" mode="aspectFill"></image>
+
+  <!-- 遮罩层 -->
+  <view class="mask"></view>
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <view class="logo-area">
+      <view class="app-name">冲鸭~自律兽！</view>
+      <view class="slogan">快乐学习，快乐成长</view>
+    </view>
+
+    <view class="login-btn-area">
+      <!-- 第一步：获取头像 -->
+      <view wx:if="{{step === 1}}">
+        <!-- 老用户：直接登录按钮 -->
+        <button wx:if="{{existingUserId}}" class="login-btn" bindtap="quickLogin">
+          <text class="btn-text">账号登录</text>
+        </button>
+        <!-- 新用户：需要选择头像 -->
+        <button wx:else class="login-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <text class="btn-text">账号登录</text>
+        </button>
+      </view>
+
+      <!-- 第二步：输入昵称 -->
+      <view wx:if="{{step === 2}}" class="step2-container">
+        <view class="avatar-preview">
+          <image class="avatar-img" src="{{tempAvatarUrl}}" mode="aspectFill"></image>
+        </view>
+        <view class="nickname-input-area">
+          <input class="nickname-input" type="nickname" placeholder="请输入昵称" value="{{tempNickName}}" bindinput="onNicknameInput" maxlength="20"></input>
+        </view>
+        <button class="login-btn confirm-btn" bindtap="confirmLogin" disabled="{{!canLogin}}">
+          <text class="btn-text">确认登录</text>
+        </button>
+      </view>
+
+      <view class="tip-text">登录即同意用户协议</view>
+
+      <!-- 游客登录按钮 -->
+      <view class="guest-login-area">
+        <button class="guest-login-btn" bindtap="guestLogin">
+          <text class="guest-btn-text">游客模式进入</text>
+        </button>
+        <view class="guest-tip">游客可体验完整功能，随时可完善资料</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载弹窗 -->
+  <view class="loading-mask" wx:if="{{loading}}">
+    <view class="loading-card">
+      <view class="loading-spinner"></view>
+      <view class="loading-text">{{loadingText}}</view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<view class="pet-card">
+  <view class="pet-avatar">
+    <image class="pet-avatar-image" src="{{pet.imageUrl || defaultImage}}" mode="aspectFill"></image>
+  </view>
+  <view class="pet-info">
+    <view class="pet-name">{{pet.name}} Lv.{{pet.level}}</view>
+    <view class="pet-stats">
+      <view class="stat-item">
+        <text class="stat-label">🍖 饥饿</text>
+        <view class="progress-bar">
+          <view class="progress-fill progress-fill-hunger" style="width: {{pet.hunger}}%"></view>
+        </view>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">😊 心情</text>
+        <view class="progress-bar">
+          <view class="progress-fill progress-fill-happiness" style="width: {{pet.happiness}}%"></view>
+        </view>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">🛁 清洁</text>
+        <view class="progress-bar">
+          <view class="progress-fill progress-fill-cleanliness" style="width: {{pet.cleanliness}}%"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

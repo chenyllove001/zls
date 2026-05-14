@@ -1,0 +1,26 @@
+<view class="container">
+  <!-- 当前班级信息 -->
+  <view class="card" wx:if="{{classInfo}}">
+    <view class="class-header">
+      <view class="class-name">{{classInfo.name}}</view>
+      <view class="class-code">加入码: {{classInfo.code}}</view>
+    </view>
+    <view class="member-count">共有 {{members.length}} 名同学</view>
+  </view>
+
+  <view class="empty-state" wx:if="{{!classInfo}}">
+    <text>你还未加入班级\n请到设置中加入或创建班级</text>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="card" wx:if="{{classInfo && sortedMembers.length > 0}}">
+    <view class="title">班级排行榜</view>
+    <view class="leaderboard">
+      <classMember wx:for="{{sortedMembers}}" wx:key="_id" member="{{item.member}}" petInfo="{{item.pet}}" rank="{{index + 1}}"></classMember>
+    </view>
+  </view>
+
+  <view class="card" wx:if="{{classInfo && sortedMembers.length === 0}}">
+    <view class="empty-state">班级还没有成员</view>
+  </view>
+</view>

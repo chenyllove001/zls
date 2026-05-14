@@ -1,0 +1,14 @@
+<view class="task-item {{status}}">
+  <view class="task-content">
+    <view class="task-title">{{task.title}}</view>
+    <view wx:if="{{task.description}}" class="task-description">{{task.description}}</view>
+    <view class="task-rewards">
+      <text class="reward exp">✨ +{{task.experienceReward}} 经验</text>
+    </view>
+  </view>
+  <view class="task-action">
+    <button wx:if="{{status === 'pending'}}" class="btn-complete" bindtap="onComplete" size="mini">完成</button>
+    <text wx:elif="{{status === 'completed'}}" class="tag-completed">✓ 已完成</text>
+    <text wx:elif="{{status === 'waiting_approval'}}" class="tag-waiting">⏳ 待审批</text>
+  </view>
+</view>

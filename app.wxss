@@ -1,0 +1,184 @@
+/* 全局样式 - 可爱活泼风格 */
+page {
+  background: linear-gradient(180deg, #fff0f5 0%, #ffe8f0 100%);
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 32rpx;
+  padding: 32rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 8rpx 20rpx rgba(255, 105, 180, 0.15);
+  border: 4rpx solid #ffe8f0;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff9a9e 0%, #ffb3c1 100%);
+  color: #ffffff;
+  border-radius: 60rpx;
+  padding: 24rpx 48rpx;
+  border: none;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(255, 154, 158, 0.3);
+}
+
+.btn-primary:active {
+  background: linear-gradient(135deg, #ff8a8e 0%, #ff9cb1 100%);
+  box-shadow: 0 2rpx 8rpx rgba(255, 154, 158, 0.3);
+}
+
+.btn-default {
+  background-color: #fef0f4;
+  color: #ff69b4;
+  border-radius: 60rpx;
+  padding: 24rpx 48rpx;
+  border: 2rpx solid #ffd6e3;
+  font-size: 32rpx;
+}
+
+.btn-default:active {
+  background-color: #ffe0e8;
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #91fa91 0%, #b0f9b0 100%);
+  color: #ffffff;
+  border-radius: 60rpx;
+  padding: 24rpx 48rpx;
+  border: none;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(145, 250, 145, 0.3);
+}
+
+.btn-success:active {
+  background: linear-gradient(135deg, #81ea81 0%, #a0e9a0 100%);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff8a80 0%, #ffab91 100%);
+  color: #ffffff;
+  border-radius: 60rpx;
+  padding: 24rpx 48rpx;
+  border: none;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-primary {
+  color: #ff69b4;
+}
+
+.text-success {
+  color: #52c41a;
+}
+
+.text-warning {
+  color: #ffb74d;
+}
+
+.text-error {
+  color: #ff5252;
+}
+
+.mt-10 {
+  margin-top: 20rpx;
+}
+
+.mt-20 {
+  margin-top: 40rpx;
+}
+
+.mb-10 {
+  margin-bottom: 20rpx;
+}
+
+.mb-20 {
+  margin-bottom: 40rpx;
+}
+
+.p-20 {
+  padding: 40rpx;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 28rpx;
+  background-color: #f5f5f5;
+  border-radius: 14rpx;
+  overflow: hidden;
+  border: 2rpx solid #eee;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff9a9e 0%, #ffb3c1 100%);
+  border-radius: 14rpx;
+  transition: width 0.3s;
+}
+
+.progress-fill-hunger {
+  background: linear-gradient(90deg, #ffcc80 0%, #ffb74d 100%);
+}
+
+.progress-fill-happiness {
+  background: linear-gradient(90deg, #81c784 0%, #66bb6a 100%);
+}
+
+.progress-fill-cleanliness {
+  background: linear-gradient(90deg, #81d4fa 0%, #4fc3f7 100%);
+}
+
+.input {
+  background-color: #fff8fa;
+  border: 2rpx solid #ffe0e9;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+/* 可爱圆角样式 */
+.round {
+  border-radius: 50%;
+}
+
+/* 泡泡效果 */
+.bubble {
+  background: #fff;
+  border-radius: 30rpx;
+  border: 3rpx solid #ffd6e3;
+}

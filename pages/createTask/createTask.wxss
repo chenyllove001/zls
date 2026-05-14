@@ -1,0 +1,93 @@
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.verification-hint {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30rpx;
+}
+
+.question-card {
+  background: #fff8fa;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  text-align: center;
+  border: 4rpx dashed #ff9a9e;
+}
+
+.question {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ff69b4;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 30rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.hint {
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.input {
+  background-color: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 32rpx;
+}
+
+.textarea {
+  min-height: 120rpx;
+  line-height: 1.5;
+}
+
+.error-text {
+  color: #ff4d4f;
+  font-size: 26rpx;
+  margin-top: 16rpx;
+}
+
+.verified-badge {
+  text-align: center;
+  color: #52c41a;
+  font-size: 28rpx;
+  font-weight: 500;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20rpx;
+}
+
+.radio-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  border: 2rpx solid transparent;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.radio-item.checked {
+  background: #ffe8f0;
+  border-color: #ff69b4;
+  color: #ff69b4;
+  font-weight: 500;
+}

@@ -1,0 +1,15 @@
+<view class="class-member {{rank <= 3 ? 'top-' + rank : ''}}">
+  <view class="rank">{{rankDisplay}}</view>
+  <view class="avatar">
+    <image class="avatar-image" src="{{member.avatarUrl || defaultAvatar}}" mode="aspectFill"></image>
+  </view>
+  <view class="info">
+    <view class="name">{{member.nickName}}</view>
+    <view wx:if="{{petInfo}}" class="pet-info">
+      {{petInfo.name}} Lv.{{petInfo.level}} · {{petInfo.experience}}/{{nextLevelExp}} 经验
+    </view>
+  </view>
+  <view wx:if="{{petInfo}}" class="level-badge">
+    Lv.{{petInfo.level}}
+  </view>
+</view>

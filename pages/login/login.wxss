@@ -1,0 +1,214 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  /* 默认渐变背景，如果背景图片没有设置会显示这个 */
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+}
+
+.bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+  z-index: 2;
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 120rpx 60rpx 100rpx;
+  box-sizing: border-box;
+}
+
+.logo-area {
+  text-align: center;
+  margin-top: 80rpx;
+}
+
+.app-name {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.3);
+  margin-bottom: 20rpx;
+}
+
+.slogan {
+  font-size: 32rpx;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.3);
+  letter-spacing: 4rpx;
+}
+
+.login-btn-area {
+  text-align: center;
+}
+
+.login-btn {
+  width: 100%;
+  height: 90rpx;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  border-radius: 45rpx;
+  border: none;
+  box-shadow: 0 8rpx 20rpx rgba(255, 154, 158, 0.4);
+  margin-bottom: 20rpx;
+}
+
+.login-btn::after {
+  border: none;
+}
+
+.btn-text {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 8rpx;
+}
+
+.tip-text {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* 游客登录样式 */
+.guest-login-area {
+  margin-top: 60rpx;
+  text-align: center;
+}
+
+.guest-login-btn {
+  width: 100%;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 40rpx;
+  border: 2rpx solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 16rpx;
+}
+
+.guest-login-btn::after {
+  border: none;
+}
+
+.guest-btn-text {
+  font-size: 30rpx;
+  color: rgba(255, 255, 255, 0.9);
+  letter-spacing: 4rpx;
+}
+
+.guest-tip {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 第二步登录样式 */
+.step2-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.avatar-preview {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4rpx solid #ffffff;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.2);
+  margin-bottom: 30rpx;
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+}
+
+.nickname-input-area {
+  width: 100%;
+  margin-bottom: 30rpx;
+}
+
+.nickname-input {
+  width: 100%;
+  height: 80rpx;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 40rpx;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+  font-size: 30rpx;
+  color: #333;
+  text-align: center;
+}
+
+.nickname-input::placeholder {
+  color: #999;
+}
+
+.confirm-btn {
+  margin-top: 10rpx;
+}
+
+.login-btn[disabled] {
+  opacity: 0.5;
+}
+
+/* 加载弹窗 */
+.loading-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loading-card {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 40rpx 60rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 240rpx;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 4rpx solid #f0f0f0;
+  border-top-color: #ff9a9e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20rpx;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 28rpx;
+  color: #666;
+}

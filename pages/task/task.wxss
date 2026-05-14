@@ -1,0 +1,328 @@
+/* Tab 切换 */
+.tab-bar {
+  display: flex;
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 8rpx;
+  margin-bottom: 20rpx;
+}
+
+.tab-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  border-radius: 12rpx;
+  position: relative;
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+}
+
+.tab-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.tab-item.active .tab-text {
+  color: #fff;
+  font-weight: 500;
+}
+
+.tab-badge {
+  background: #ff4d4f;
+  color: #fff;
+  font-size: 20rpx;
+  min-width: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  text-align: center;
+  border-radius: 16rpx;
+  padding: 0 6rpx;
+  margin-left: 8rpx;
+}
+
+.tab-content {
+  min-height: 400rpx;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.btn-add {
+  background: linear-gradient(135deg, #ff9a9e 0%, #ffb3c1 100%);
+  color: #fff;
+  border-radius: 30rpx;
+  font-size: 24rpx;
+  padding: 0 24rpx;
+  line-height: 50rpx;
+}
+
+.btn-add::after {
+  border: none;
+}
+
+.task-list {
+  margin-top: 20rpx;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60rpx 0;
+  color: #999;
+  font-size: 32rpx;
+}
+
+.tips-card {
+  margin-top: 20rpx;
+}
+
+.tips-title {
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.tips-text {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 8rpx;
+}
+
+/* 审批列表 - 和任务列表样式一致 */
+.approval-card {
+  margin-top: 20rpx;
+}
+
+.approval-list {
+  display: block;
+}
+
+.approval-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 24rpx !important;
+  background: #ffffff !important;
+  border-radius: 12rpx !important;
+  margin-bottom: 16rpx !important;
+  border-left: 6rpx solid #faad14 !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.approval-info {
+  flex: 1 !important;
+  margin-right: 20rpx !important;
+  min-width: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  text-align: left !important;
+}
+
+.approval-user {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: #333333;
+  margin-bottom: 8rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.approval-task {
+  font-size: 26rpx;
+  color: #999999;
+  margin-bottom: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.approval-exp {
+  font-size: 24rpx;
+  padding: 4rpx 12rpx;
+  background: #fff8fa;
+  border-radius: 8rpx;
+  color: #ff69b4;
+  display: inline-block;
+}
+
+.approval-actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12rpx;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.approval-actions button {
+  display: inline-block;
+  margin: 0;
+}
+
+.btn-approve {
+  background: #52c41a !important;
+  color: #ffffff !important;
+  border-radius: 30rpx !important;
+  font-size: 26rpx !important;
+  line-height: 60rpx !important;
+  padding: 0 24rpx !important;
+  border: none !important;
+  width: auto !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.btn-approve::after {
+  border: none !important;
+}
+
+.btn-reject {
+  background: #ff4d4f !important;
+  color: #ffffff !important;
+  border-radius: 30rpx !important;
+  font-size: 26rpx !important;
+  line-height: 60rpx !important;
+  padding: 0 24rpx !important;
+  border: none !important;
+  width: auto !important;
+  display: inline-block !important;
+  margin: 0 !important;
+}
+
+.btn-reject::after {
+  border: none !important;
+}
+
+/* 验证弹窗 */
+.verification-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.verification-card {
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+  background: #fff;
+}
+
+.verify-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.verify-hint {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30rpx;
+}
+
+.question-card {
+  background: #fff8fa;
+  border-radius: 24rpx;
+  padding: 40rpx;
+  text-align: center;
+  border: 4rpx dashed #ff9a9e;
+}
+
+.question {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #ff69b4;
+}
+
+.error-text {
+  color: #ff4d4f;
+  font-size: 26rpx;
+  margin-top: 16rpx;
+}
+
+.button-group {
+  display: flex;
+  gap: 20rpx;
+}
+
+.button-group button {
+  flex: 1;
+}
+
+.mt-20 {
+  margin-top: 20rpx;
+}
+
+.form-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.input {
+  width: 100%;
+  background: #f5f5f5;
+  border-radius: 8rpx;
+  padding: 20rpx;
+  font-size: 28rpx;
+  color: #333;
+  box-sizing: border-box;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 0 24rpx;
+  line-height: 70rpx;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-default {
+  background: #f0f0f0;
+  color: #666;
+  border-radius: 40rpx;
+  font-size: 28rpx;
+  padding: 0 24rpx;
+  line-height: 70rpx;
+}
+
+.btn-default::after {
+  border: none;
+}

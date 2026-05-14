@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "classMember": "/components/classMember/classMember"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "班级"
+}

@@ -1,0 +1,92 @@
+<view class="container">
+  <!-- Tab 切换 -->
+  <view class="tab-bar">
+    <view class="tab-item {{currentTab === 'tasks' ? 'active' : ''}}" bindtap="switchTab" data-tab="tasks">
+      <text class="tab-text">任务列表</text>
+    </view>
+    <view class="tab-item {{currentTab === 'approval' ? 'active' : ''}}" bindtap="switchTab" data-tab="approval">
+      <text class="tab-text">任务审批</text>
+      <text wx:if="{{pendingCount > 0}}" class="tab-badge">{{pendingCount}}</text>
+    </view>
+  </view>
+
+  <!-- 任务列表 -->
+  <view class="tab-content" wx:if="{{currentTab === 'tasks'}}">
+    <view class="card">
+      <view class="header">
+        <text class="title">📋 可接任务</text>
+      </view>
+    </view>
+
+    <view wx:if="{{tasks.length > 0}}" class="task-list">
+      <taskItem
+        wx:for="{{tasks}}"
+        wx:key="_id"
+        task="{{item}}"
+        status="{{taskStatus[item._id] || 'pending'}}"
+        bindcomplete="onTaskComplete"
+      ></taskItem>
+    </view>
+
+    <view wx:else class="card">
+      <view class="empty-state">
+        <text>暂无可用任务</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 审批列表 -->
+  <view class="tab-content" wx:if="{{currentTab === 'approval'}}">
+    <view class="card">
+      <view class="header">
+        <text class="title">⏳ 待审批任务</text>
+      </view>
+    </view>
+
+    <view class="card approval-card">
+      <view wx:if="{{pendingTasks.length > 0}}" class="approval-list">
+        <view class="approval-item" wx:for="{{pendingTasks}}" wx:key="_id">
+          <view class="approval-info">
+            <view class="approval-user">{{item.userName}}</view>
+            <view class="approval-task">{{item.taskName}}</view>
+            <view class="approval-exp">+{{item.experienceReward}} 经验</view>
+          </view>
+          <view class="approval-actions">
+            <button size="mini" class="btn-approve" catchtap="approveTask" data-task-id="{{item._id}}" data-approved="{{true}}">通过</button>
+            <button size="mini" class="btn-reject" catchtap="approveTask" data-task-id="{{item._id}}" data-approved="{{false}}">拒绝</button>
+          </view>
+        </view>
+      </view>
+
+      <view wx:else class="empty-state">
+        <text>暂无待审批任务</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 审批验证弹窗 -->
+  <view class="verification-overlay" wx:if="{{showApprovalVerify}}">
+    <view class="verification-card card">
+      <view class="verify-title">验证身份</view>
+      <view class="verify-hint">查看审批列表需要完成验证，请回答下面的乘法题目：</view>
+      <view class="question-card">
+        <view class="question">{{verifyQuestion}}</view>
+      </view>
+      <view class="form-item mt-20">
+        <view class="label">请输入你的答案</view>
+        <input class="input" type="number" placeholder="输入答案" value="{{verifyAnswer}}" bindinput="onVerifyAnswerInput" />
+      </view>
+      <view class="error-text" wx:if="{{verifyError}}">{{verifyError}}</view>
+      <view class="button-group mt-20">
+        <button class="btn-default" bindtap="cancelApprovalVerify">取消</button>
+        <button class="btn-primary" bindtap="submitApprovalVerify" disabled="{{verifying}}">验证</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="card tips-card">
+    <text class="tips-title">💡 小贴士</text>
+    <text class="tips-text">每天完成任务可以让宠物更快成长，属性会随时间自然衰减，记得经常来完成任务哦！</text>
+    <text class="tips-text" wx:if="{{approvalEnabled}}">⚠️ 当前已开启任务审批，完成任务后需要等待审核才能获得经验</text>
+  </view>
+</view>

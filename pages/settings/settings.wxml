@@ -1,0 +1,224 @@
+<view class="container">
+  <!-- 整体验证状态 -->
+  <view class="card verify-card" wx:if="{{!settingsVerified}}">
+    <view class="verify-section">
+      <view class="verify-info">
+        <view class="verify-title">管理员验证</view>
+        <view class="verify-desc">完成验证后可使用高级功能</view>
+      </view>
+      <button class="btn-verify" bindtap="showVerifyModal">去验证</button>
+    </view>
+  </view>
+
+  <!-- 个人设置 -->
+  <view class="card">
+    <view class="section-title">
+      <text class="section-icon">👤</text>
+      <text class="section-text">个人设置</text>
+    </view>
+
+    <view class="setting-item">
+      <view class="setting-label">自定义昵称</view>
+      <view class="setting-control">
+        <input class="input-box" type="text" placeholder="输入你的昵称" value="{{customName}}" bindinput="onNameInput" />
+        <button class="btn-primary btn-small" bindtap="saveCustomName">保存</button>
+      </view>
+    </view>
+
+    <view class="setting-item">
+      <view class="setting-label">当前班级</view>
+      <view class="setting-value">
+        <text wx:if="{{currentClass}}" class="text-success">{{currentClass.name}}</text>
+        <text wx:else class="text-warning">未加入班级</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 任务设置（需验证后显示） -->
+  <view class="card" wx:if="{{settingsVerified}}">
+    <view class="section-title">
+      <text class="section-icon">⚙️</text>
+      <text class="section-text">任务设置</text>
+    </view>
+
+    <view class="setting-item">
+      <view class="setting-info">
+        <view class="setting-label">任务审批</view>
+        <view class="setting-desc">开启后任务需要审批才能生效</view>
+      </view>
+      <switch checked="{{approvalEnabled}}" bindchange="toggleApproval" color="#ff9a9e" />
+    </view>
+
+    <view class="setting-item">
+      <view class="setting-info">
+        <view class="setting-label">创建自定义任务</view>
+        <view class="setting-desc">创建专属的自定义任务</view>
+      </view>
+      <button class="btn-primary btn-small" bindtap="goToCreateTask">创建</button>
+    </view>
+
+    <!-- 自定义任务列表 -->
+    <view class="task-list-section">
+      <view class="task-list-header">
+        <view class="setting-label">我的自定义任务</view>
+        <view class="task-count">共 {{taskList.length}} 个</view>
+      </view>
+
+      <!-- Tab 切换 -->
+      <view class="tab-bar">
+        <view class="tab-item {{taskTab === 'class' ? 'active' : ''}}" hover-class="tab-hover" bindtap="switchTaskTab" data-tab="class">
+          <text class="tab-text">班级任务</text>
+          <text wx:if="{{classTasks.length > 0}}" class="tab-badge">{{classTasks.length}}</text>
+        </view>
+        <view class="tab-item {{taskTab === 'private' ? 'active' : ''}}" hover-class="tab-hover" bindtap="switchTaskTab" data-tab="private">
+          <text class="tab-text">个人任务</text>
+          <text wx:if="{{privateTasks.length > 0}}" class="tab-badge">{{privateTasks.length}}</text>
+        </view>
+      </view>
+
+      <view class="tab-content">
+        <!-- 班级任务列表 -->
+        <view wx:if="{{taskTab === 'class'}}">
+          <view wx:if="{{classTasks.length > 0}}" class="task-list">
+            <view class="task-item" wx:for="{{classTasks}}" wx:key="_id">
+              <view class="task-info">
+                <view class="task-title">{{item.title}}</view>
+                <view class="task-desc" wx:if="{{item.description}}">{{item.description}}</view>
+                <view class="task-meta">
+                  <text class="task-exp">+{{item.experienceReward}} 经验</text>
+                  <text class="task-creator" wx:if="{{item.creatorId !== userId}}">他人创建</text>
+                </view>
+              </view>
+              <view class="task-actions">
+                <block wx:if="{{item.canEdit}}">
+                  <button size="mini" class="btn-edit" bindtap="editTask" data-task="{{item}}">编辑</button>
+                  <button size="mini" class="btn-delete" bindtap="deleteTask" data-task="{{item}}">删除</button>
+                </block>
+                <text class="task-disabled" wx:else>不可编辑</text>
+              </view>
+            </view>
+          </view>
+          <view wx:else class="empty-tasks">
+            <text class="empty-icon">🏫</text>
+            <text class="empty-text">暂无班级任务</text>
+          </view>
+        </view>
+
+        <!-- 个人任务列表 -->
+        <view wx:if="{{taskTab === 'private'}}">
+          <view wx:if="{{privateTasks.length > 0}}" class="task-list">
+            <view class="task-item" wx:for="{{privateTasks}}" wx:key="_id">
+              <view class="task-info">
+                <view class="task-title">{{item.title}}</view>
+                <view class="task-desc" wx:if="{{item.description}}">{{item.description}}</view>
+                <view class="task-meta">
+                  <text class="task-exp">+{{item.experienceReward}} 经验</text>
+                </view>
+              </view>
+              <view class="task-actions">
+                <button size="mini" class="btn-edit" bindtap="editTask" data-task="{{item}}">编辑</button>
+                <button size="mini" class="btn-delete" bindtap="deleteTask" data-task="{{item}}">删除</button>
+              </view>
+            </view>
+          </view>
+          <view wx:else class="empty-tasks">
+            <text class="empty-icon">👤</text>
+            <text class="empty-text">暂无个人任务，点击上方按钮创建</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 班级设置（需验证后显示） -->
+  <view class="card" wx:if="{{settingsVerified}}">
+    <view class="section-title">
+      <text class="section-icon">🏫</text>
+      <text class="section-text">班级设置</text>
+    </view>
+
+    <!-- 已加入班级 -->
+    <view wx:if="{{currentClass}}">
+      <view class="setting-item">
+        <view class="setting-label">班级名称</view>
+        <view class="setting-value">{{currentClass.name}}</view>
+      </view>
+      <view class="setting-item">
+        <view class="setting-label">班级成员</view>
+        <view class="setting-value">{{currentClass.memberCount || 0}} 人</view>
+      </view>
+      <view class="setting-item row">
+        <button class="btn-danger" bindtap="leaveClass">退出班级</button>
+      </view>
+    </view>
+
+    <!-- 未加入班级 -->
+    <view wx:else>
+      <view class="setting-item">
+        <view class="setting-label">创建新班级</view>
+        <view class="setting-control">
+          <input class="input-box" placeholder="输入班级名称" value="{{newClassName}}" bindinput="onNewClassNameInput" />
+          <button class="btn-default btn-small" bindtap="createClass">创建</button>
+        </view>
+      </view>
+
+      <!-- 班级列表 -->
+      <view wx:if="{{classList.length > 0}}" class="class-list-container">
+        <view class="setting-label">可加入的班级</view>
+        <view class="class-list">
+          <view class="class-list-item" wx:for="{{classList}}" wx:key="_id" bindtap="joinClassFromList" data-id="{{item._id}}">
+            <view class="class-info">
+              <view class="class-item-name">{{item.name}}</view>
+              <view class="class-item-count">{{item.memberCount}} 名同学</view>
+            </view>
+            <view class="join-btn">加入</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 未验证提示 -->
+  <view class="card" wx:if="{{!settingsVerified}}">
+    <view class="locked-hint">
+      <text class="locked-icon">🔒</text>
+      <text class="locked-text">完成管理员验证后，可使用班级管理和任务设置功能</text>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="card about-card">
+    <view class="section-title">
+      <text class="section-icon">ℹ️</text>
+      <text class="section-text">关于</text>
+    </view>
+    <view class="about-item">
+      <text class="about-label">小程序名称</text>
+      <text class="about-value">自律兽go</text>
+    </view>
+    <view class="about-item">
+      <text class="about-label">玩法说明</text>
+      <text class="about-desc">这是一个教育游戏化养成小程序，学生可以领养宠物，通过完成学习任务让宠物成长。</text>
+    </view>
+  </view>
+
+  <!-- 整体验证弹窗 -->
+  <view class="verification-overlay" wx:if="{{showVerifyModal}}">
+    <view class="verification-card card">
+      <view class="verify-title">管理员验证</view>
+      <view class="verify-hint">请回答下面的乘法题目完成验证：</view>
+      <view class="question-card">
+        <view class="question">{{verifyQuestion}}</view>
+      </view>
+      <view class="form-item mt-20">
+        <view class="label">请输入你的答案</view>
+        <input class="input" type="number" placeholder="输入答案" value="{{verifyAnswer}}" bindinput="onVerifyAnswerInput" />
+      </view>
+      <view class="error-text" wx:if="{{verifyError}}">{{verifyError}}</view>
+      <view class="button-group mt-20">
+        <button class="btn-default" bindtap="cancelVerify">取消</button>
+        <button class="btn-primary" bindtap="submitVerify" disabled="{{verifying}}">验证</button>
+      </view>
+    </view>
+  </view>
+</view>

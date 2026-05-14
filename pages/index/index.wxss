@@ -1,0 +1,234 @@
+/* 首页 - 仿蚂蚁庄园风格 */
+.welcome-bar {
+  background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+  border-radius: 32rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(255, 154, 158, 0.3);
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 44rpx;
+  margin-right: 24rpx;
+  border: 4rpx solid #fff;
+}
+
+.user-text {
+  color: #fff;
+}
+
+.welcome-text {
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 8rpx;
+}
+
+.class-text {
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+/* 宠物主卡片 */
+.pet-main-card {
+  background: #fff;
+  border-radius: 40rpx;
+  padding: 40rpx 32rpx;
+  margin-bottom: 32rpx;
+  text-align: center;
+  box-shadow: 0 8rpx 24rpx rgba(255, 105, 180, 0.15);
+  border: 6rpx solid #ffe8f0;
+}
+
+.pet-circle {
+  width: 280rpx;
+  height: 280rpx;
+  margin: 0 auto 32rpx;
+  background: linear-gradient(135deg, #ffe8f0 0%, #fff0f5 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 8rpx solid #ffd6e3;
+}
+
+.pet-big-image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.pet-name-level {
+  margin-bottom: 32rpx;
+}
+
+.pet-name {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 16rpx;
+}
+
+.pet-level {
+  font-size: 28rpx;
+  color: #ff69b4;
+  background: #ffe8f0;
+  padding: 8rpx 20rpx;
+  border-radius: 30rpx;
+  display: inline-block;
+}
+
+.exp-bar-wrap {
+  margin-bottom: 32rpx;
+}
+
+.exp-text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+/* 宠物四维属性 */
+.pet-attrs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16rpx;
+  margin-bottom: 20rpx;
+}
+
+.attr-item {
+  display: flex;
+  align-items: center;
+  gap: 12rpx;
+  background: #fff8fa;
+  border-radius: 20rpx;
+  padding: 16rpx;
+  border: 3rpx solid #ffe8f0;
+}
+
+.attr-icon {
+  font-size: 36rpx;
+}
+
+.attr-name {
+  font-size: 24rpx;
+  color: #666;
+}
+
+.attr-value {
+  font-size: 32rpx;
+  color: #ff69b4;
+  font-weight: bold;
+  margin-left: 8rpx;
+}
+
+/* 属性点提示 */
+.points-tips {
+  background: #fff8e1;
+  color: #ffb74d;
+  border-radius: 20rpx;
+  padding: 16rpx 20rpx;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+/* 空状态 */
+.empty-card {
+  padding: 80rpx 32rpx;
+}
+
+.empty-text {
+  font-size: 36rpx;
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 16rpx;
+}
+
+.empty-hint {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 32rpx;
+}
+
+/* 快捷入口网格 */
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+  margin-bottom: 32rpx;
+}
+
+.quick-item {
+  background: #fff;
+  border-radius: 32rpx;
+  padding: 32rpx 16rpx;
+  text-align: center;
+  border: 4rpx solid #ffe8f0;
+  box-shadow: 0 4rpx 12rpx rgba(255, 105, 180, 0.1);
+}
+
+.quick-icon {
+  font-size: 64rpx;
+  margin-bottom: 12rpx;
+}
+
+.quick-name {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.quick-item:active {
+  background: #fff8fa;
+  transform: scale(0.98);
+}
+
+/* 帮助卡片 */
+.help-card {
+  background: #fff;
+}
+
+.help-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 24rpx;
+  text-align: center;
+}
+
+.help-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.help-item:last-child {
+  margin-bottom: 0;
+}
+
+.num {
+  background: linear-gradient(135deg, #ff9a9e 0%, #ffb3c1 100%);
+  color: #fff;
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  font-weight: bold;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  margin-top: 4rpx;
+}
+
+.desc {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}

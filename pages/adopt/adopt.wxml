@@ -1,0 +1,29 @@
+<view class="container">
+  <view class="card">
+    <view class="title">选择你的宠物</view>
+
+    <view class="pet-selection">
+      <view class="pet-option {{selectedType === item.type ? 'selected' : ''}}"
+            wx:for="{{petTypes}}"
+            wx:key="type"
+            bindtap="selectPet"
+            data-type="{{item.type}}">
+        <image class="pet-icon" src="/assets/images/{{item.image}}"></image>
+        <view class="pet-name">{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="form-item mt-20">
+      <view class="label">给你的宠物起个名字</view>
+      <input class="input" placeholder="输入宠物名字" value="{{petName}}" bindinput="onNameInput" />
+    </view>
+
+    <view class="adopt-info mt-20">
+      <text>选择宠物类型，输入名字后就可以领养啦！</text>
+    </view>
+
+    <button class="btn-primary mt-20 {{canAdopt ? '' : 'btn-disabled'}}" bindtap="adoptPet" disabled="{{!canAdopt}}">
+      立即领养
+    </button>
+  </view>
+</view>

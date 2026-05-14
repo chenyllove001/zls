@@ -1,0 +1,81 @@
+<view class="container">
+  <view wx:if="{{petInfo}}" class="card">
+    <view class="pet-header">
+      <view class="pet-circle">
+        <image class="pet-image" src="{{currentImage}}" mode="aspectFill"></image>
+      </view>
+      <view class="pet-basic">
+        <view class="pet-name">{{petInfo.name}}</view>
+        <view class="pet-level">Lv.{{petInfo.level}} · 阶段 {{evolutionStage}}</view>
+        <view wx:if="{{petInfo.attributePoints > 0}}" class="attribute-points">
+          🎁 还有 {{petInfo.attributePoints}} 点可分配
+        </view>
+      </view>
+    </view>
+
+    <!-- 经验条 -->
+    <view class="stat-item">
+      <view class="stat-header">
+        <text class="stat-label">✨ 经验</text>
+        <text class="stat-value">{{petInfo.experience}} / 100</text>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{expPercent}}%"></view>
+      </view>
+    </view>
+
+    <!-- 四维属性 -->
+    <view class="attributes-grid">
+      <view class="attr-item">
+        <view class="attr-info">
+          <text class="attr-icon">⚔️</text>
+          <text class="attr-name">攻击</text>
+          <text class="attr-value">{{petInfo.attack}}</text>
+        </view>
+        <button wx:if="{{canAddPoints}}" class="btn-add" bindtap="addPoint" data-attr="attack">+</button>
+      </view>
+      <view class="attr-item">
+        <view class="attr-info">
+          <text class="attr-icon">⚡</text>
+          <text class="attr-name">速度</text>
+          <text class="attr-value">{{petInfo.speed}}</text>
+        </view>
+        <button wx:if="{{canAddPoints}}" class="btn-add" bindtap="addPoint" data-attr="speed">+</button>
+      </view>
+      <view class="attr-item">
+        <view class="attr-info">
+          <text class="attr-icon">🛡️</text>
+          <text class="attr-name">防御</text>
+          <text class="attr-value">{{petInfo.defense}}</text>
+        </view>
+        <button wx:if="{{canAddPoints}}" class="btn-add" bindtap="addPoint" data-attr="defense">+</button>
+      </view>
+      <view class="attr-item">
+        <view class="attr-info">
+          <text class="attr-icon">❤️</text>
+          <text class="attr-name">生命</text>
+          <text class="attr-value">{{petInfo.hp}}</text>
+        </view>
+        <button wx:if="{{canAddPoints}}" class="btn-add" bindtap="addPoint" data-attr="hp">+</button>
+      </view>
+    </view>
+
+    <view class="evolution-info">
+      <text>💎 成长阶段: {{evolutionStage}}/4</text>
+      <text>每10级自动进化到下一阶段，更换外观!</text>
+    </view>
+
+    <view class="adopt-time">
+      领养时间: {{adoptTime}}
+    </view>
+
+    <button class="btn-primary mt-20" bindtap="goToTasks">去做任务获得经验</button>
+  </view>
+
+  <view wx:else class="card">
+    <view class="empty-state">
+      <text>还没有领养宠物</text>
+      <button class="btn-primary mt-20" bindtap="goToAdopt">立即领养</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "taskItem": "/components/taskItem/taskItem"
+  },
+  "enablePullDownRefresh": true,
+  "navigationBarTitleText": "任务"
+}

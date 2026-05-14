@@ -1,0 +1,92 @@
+.class-member {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.class-member.top-1 {
+  background: linear-gradient(135deg, #fef08a 0%, #facc15 100%);
+}
+
+.class-member.top-2 {
+  background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+}
+
+.class-member.top-3 {
+  background: linear-gradient(135deg, #fed7aa 0%, #fb923c 100%);
+}
+
+.rank {
+  width: 48rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #666;
+  margin-right: 16rpx;
+}
+
+.class-member.top-1 .rank {
+  color: #f59e0b;
+}
+
+.class-member.top-2 .rank {
+  color: #6b7280;
+}
+
+.class-member.top-3 .rank {
+  color: #ea580c;
+}
+
+.avatar {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+  background: #f0f0f0;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4rpx;
+}
+
+.pet-info {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.level-badge {
+  background: #4A90E2;
+  color: #fff;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  font-weight: 500;
+}
+
+.class-member.top-1 .level-badge {
+  background: rgba(245, 158, 11, 0.9);
+}
+
+.class-member.top-2 .level-badge {
+  background: rgba(107, 114, 128, 0.9);
+}
+
+.class-member.top-3 .level-badge {
+  background: rgba(234, 88, 12, 0.9);
+}

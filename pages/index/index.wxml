@@ -1,0 +1,118 @@
+<!-- 首页 - 仿蚂蚁庄园风格 -->
+<view class="container">
+  <!-- 欢迎信息栏 -->
+  <view class="welcome-bar">
+    <view class="user-info">
+      <image class="avatar" src="{{userInfo.avatarUrl || defaultAvatar}}"></image>
+      <view class="user-text">
+        <view class="welcome-text">你好呀{{userInfo.customName || ''}}小盆友!</view>
+        <view wx:if="{{classInfo}}" class="class-text">🏫 {{classInfo.name}}</view>
+        <view wx:else class="class-text text-warning">还没加入班级哦</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 宠物主展示区 -->
+  <view class="pet-main-card" wx:if="{{hasPet && petInfo}}">
+    <view class="pet-circle">
+      <image class="pet-big-image" src="{{petInfo.imageUrl || defaultImage}}"></image>
+    </view>
+    <view class="pet-name-level">
+      <text class="pet-name">{{petInfo.name}}</text>
+      <text class="pet-level">Lv.{{petInfo.level}}</text>
+    </view>
+
+    <!-- 经验条 -->
+    <view class="exp-bar-wrap">
+      <text class="exp-text">✨ 经验 {{petInfo.experience}} / 100</text>
+      <view class="progress-bar mt-10">
+        <view class="progress-fill" style="width: {{expPercent}}%"></view>
+      </view>
+    </view>
+
+    <!-- 宠物四维属性 -->
+    <view class="pet-attrs">
+      <view class="attr-item">
+        <view class="attr-icon">⚔️</view>
+        <view class="attr-info">
+          <text class="attr-name">攻击</text>
+          <text class="attr-value">{{petInfo.attack}}</text>
+        </view>
+      </view>
+      <view class="attr-item">
+        <view class="attr-icon">⚡</view>
+        <view class="attr-info">
+          <text class="attr-name">速度</text>
+          <text class="attr-value">{{petInfo.speed}}</text>
+        </view>
+      </view>
+      <view class="attr-item">
+        <view class="attr-icon">🛡️</view>
+        <view class="attr-info">
+          <text class="attr-name">防御</text>
+          <text class="attr-value">{{petInfo.defense}}</text>
+        </view>
+      </view>
+      <view class="attr-item">
+        <view class="attr-icon">❤️</view>
+        <view class="attr-info">
+          <text class="attr-name">生命</text>
+          <text class="attr-value">{{petInfo.hp}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 属性点提示 -->
+    <view wx:if="{{petInfo.attributePoints > 0}}" class="points-tips">
+      🎁 还有 {{petInfo.attributePoints}} 点属性可以分配，去宠物页面加点吧！
+    </view>
+  </view>
+
+  <!-- 没宠物提示 -->
+  <view class="pet-main-card empty-card" wx:else>
+    <view class="empty-text">还没有领养宠物哦</view>
+    <view class="empty-hint">快来领养一只属于你的可爱宠物吧!</view>
+    <button class="btn-primary mt-20" bindtap="goToAdopt">🐾 立即领养</button>
+  </view>
+
+  <!-- 快捷功能入口 -->
+  <view class="quick-grid">
+    <view class="quick-item" bindtap="goToTasks">
+      <view class="quick-icon task">📝</view>
+      <view class="quick-name">去做任务</view>
+    </view>
+    <view class="quick-item" bindtap="goToPet">
+      <view class="quick-icon pet">🐾</view>
+      <view class="quick-name">宠物详情</view>
+    </view>
+    <view class="quick-item" bindtap="goToCreateTask">
+      <view class="quick-icon add">➕</view>
+      <view class="quick-name">添加任务</view>
+    </view>
+    <view class="quick-item" bindtap="goToClass">
+      <view class="quick-icon class">🏫</view>
+      <view class="quick-name">我的班级</view>
+    </view>
+    <view class="quick-item" bindtap="goToSettings">
+      <view class="quick-icon settings">⚙️</view>
+      <view class="quick-name">设置</view>
+    </view>
+  </view>
+
+  <!-- 玩法说明 -->
+  <view class="help-card card">
+    <view class="help-title">🎮 怎么玩?</view>
+    <view class="help-item">
+      <text class="num">1</text>
+      <text class="desc">每天完成学习任务，让宠物快快长大</text>
+    </view>
+    <view class="help-item">
+      <text class="num">2</text>
+      <text class="desc">答对乘法题，可以自己创建新任务</text>
+    </view>
+    <view class="help-item">
+      <text class="num">3</text>
+      <text class="desc">和班级小伙伴比一比谁的宠物等级高</text>
+    </view>
+  </view>
+</view>

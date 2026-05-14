@@ -1,0 +1,38 @@
+<view class="container">
+  <!-- 创建任务表单 -->
+  <view class="card">
+    <view class="title">创建自定义任务</view>
+
+    <view class="form-item mt-20">
+      <view class="label">任务标题 *</view>
+      <input class="input" placeholder="例如：阅读30分钟" value="{{title}}" bindinput="onTitleInput" />
+    </view>
+
+    <view class="form-item mt-20">
+      <view class="label">任务描述</view>
+      <textarea class="input textarea" placeholder="描述一下这个任务..." value="{{description}}" bindinput="onDescriptionInput"></textarea>
+    </view>
+
+    <view class="form-item mt-20">
+      <view class="label">经验奖励: {{experienceReward}}</view>
+      <slider min="5" max="30" step="1" value="{{experienceReward}}" bindchange="onExpChange" />
+      <view class="hint">一天最多获得 100 经验，任务最多显示 10 个</view>
+    </view>
+
+    <view class="form-item mt-20">
+      <view class="label">任务可见范围</view>
+      <view class="radio-group">
+        <label class="radio-item {{scope === 'private' ? 'checked' : ''}}" bindtap="changeScope" data-scope="private">
+          <text>仅自己可见</text>
+        </label>
+        <label class="radio-item {{scope === 'class' ? 'checked' : ''}}" bindtap="changeScope" data-scope="class" wx:if="{{hasClass}}">
+          <text>班级可见</text>
+        </label>
+      </view>
+    </view>
+
+    <button class="btn-primary mt-20" bindtap="createTask" disabled="{{creating}}">
+      {{creating ? '创建中...' : '创建任务'}}
+    </button>
+  </view>
+</view>
